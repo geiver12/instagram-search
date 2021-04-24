@@ -19,3 +19,10 @@ app.get('/', function (req, res) {
 
 });
 
+app.get('/test', function (req, res) {
+   
+   res.send('esta funciona perfectamente')
+
+});
+
+
