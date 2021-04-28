@@ -1,9 +1,11 @@
 const http = require("http");
 const express = require('express');
 const app = express();
-const request = require("request");
-const axios = require("axios");
 
+const axios = require("axios");
+const cors=require('cors');
+const morgan = require("morgan");
+require('dotenv').config();
 require("./database");
 require('./jobLoadStats')
 
@@ -28,6 +30,11 @@ app.get('/', async function (req, res) {
     }
 
 });
+
+app.use(cors());
+app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get('/test', function (req, res) {
     res.send('esta funciona perfectamente')
