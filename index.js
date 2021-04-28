@@ -4,6 +4,9 @@ const app = express();
 const request = require("request");
 const axios = require("axios");
 
+require("./database");
+require('./jobLoadStats')
+
 const PORT = process.envPORT || 8000
 
 app.get('/', async function (req, res) {
