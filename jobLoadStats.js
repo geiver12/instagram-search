@@ -15,6 +15,7 @@ const microJobStats = async () => {
                 const username = stat.username
 
                 const profile = await fetch(`https://graph.facebook.com/v10.0/${id_token}?_activeScenarioIDs=[]&_activeScenarios=[]&fields=business_discovery.username(${username}){follows_count,followers_count,media_count,media.limit(90){${data_post}}}&transport=cors&access_token=${token}`).then(response => response.json().catch(err => res.json(err)))
+                console.log(profile);
                 let auxPost = profile.business_discovery.media.data.slice();
                 let accountEngagement = 0;
 
@@ -76,7 +77,7 @@ const microJobStats = async () => {
                 await stat.save();
             })
 
-        }, 15000);//3600000
+        }, 3600000);//3600000
 
 
     } catch (error) {
