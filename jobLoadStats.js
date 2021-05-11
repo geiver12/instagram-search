@@ -1,12 +1,14 @@
 
 const fetch = require("node-fetch");
+const cron = require('node-cron');
 const Stat = require("./stats");
 const id_token = process.env.ID_TOKEN_MOMENT
 const token = process.env.TOKEN_INSTAGRAM_MOMENT
 
 const microJobStats = async () => {
-    try {
-        setInterval(async () => {
+
+    cron.schedule('* * */8 * * *', async function () {
+        try {
             const data_post = "comments_count,like_count"
             const stats = await Stat.find({});
             console.log(id_token)
@@ -76,13 +78,13 @@ const microJobStats = async () => {
 
                 await stat.save();
             })
+        } catch (error) {
+            console.error(error);
+        }
+    });
 
-        }, 3600000);//3600000
 
 
-    } catch (error) {
-        console.error(error);
-    }
 }
 
 microJobStats();
