@@ -18,17 +18,17 @@ const PORT = process.envPORT || 8000
 const Instagram = require('instagram-web-api')
 const username = "sosdani2000@hotmail.com", password = "21036842"
 
-const client = new Instagram({ username, password })
+///const client = new Instagram({ username, password })
 
 app.get('/', async (req, res) => {
     try {
         const query = req.body.query;
         const profile = await fetch(`https://graph.facebook.com/v11.0/${id_token}?_activeScenarioIDs=[]&_activeScenarios=[]&fields=business_discovery.username(${username}){follows_count,followers_count,media_count,media.limit(90){${data_post}}}&transport=cors&access_token=${token}`).then(response => response.json().catch(err => res.json(err)))
         console.log(query)
-        await axios.get("https://www.instagram.com/web/search/topsearch/?context=blended&query=instaescuela").then(response => {
+        //await axios.get("https://www.instagram.com/web/search/topsearch/?context=blended&query=instaescuela").then(response => {
             //  console.log(response.data)
-            res.send({ data: response.data })
-        })
+          //  res.send({ data: response.data })
+     //   })
         // const stats = await Stat.find({});
         //  res.json(stats)
         //https://www.instagram.com/{username}/?__a=1
